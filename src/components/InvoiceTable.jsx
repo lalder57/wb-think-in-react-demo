@@ -1,13 +1,42 @@
 import './InvoiceTable.css';
-import DescriptionCell from './DescriptionCell.jsx';
+import TableRow from './TableRow.jsx';
+import TableHeader from './TableHeader.jsx'
+import AddRowButton from './AddRowButton.jsx'
 
-import ModeButtons from './ModeButtons.jsx';
 
-const InvoiceTable = () => {
+const InvoiceTable = ( {initialData }) => {
+
+  console.log("INITIAL DATA:", initialData);
   return (
+    
     <div>
-      InvoiceTable goes Here
-      <DescriptionCell isEditing={false} value={"My description"}/>
+      <table>
+        <thead>
+          <TableHeader />
+        </thead>
+        <tbody>
+          <TableRow 
+            initialIsEditing={false}
+            initialInvoiceData={initialData[0]}
+            />
+            <TableRow 
+            initialIsEditing={false}
+            initialInvoiceData={initialData[1]}
+            />
+            <TableRow 
+            initialIsEditing={false}
+            initialInvoiceData={initialData[2]}
+            />
+            <TableRow 
+            initialIsEditing={false}
+            initialInvoiceData={initialData[3]}
+            />
+
+        </tbody>
+        <tfoot>
+          <AddRowButton />
+        </tfoot>
+      </table>
     </div>
   )
 }
