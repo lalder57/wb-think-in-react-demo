@@ -6,7 +6,15 @@ import AddRowButton from './AddRowButton.jsx'
 
 const InvoiceTable = ( {initialData }) => {
 
-  console.log("INITIAL DATA:", initialData);
+  const rows = initialData.map((invoiceItem) => {
+    return (
+      <TableRow 
+        key={invoiceItem.id}
+        initialInvoiceData={invoiceItem}
+        initialIsEditing={false}
+      />
+    )
+  })
   return (
     
     <div>
@@ -15,23 +23,7 @@ const InvoiceTable = ( {initialData }) => {
           <TableHeader />
         </thead>
         <tbody>
-          <TableRow 
-            initialIsEditing={false}
-            initialInvoiceData={initialData[0]}
-            />
-            <TableRow 
-            initialIsEditing={false}
-            initialInvoiceData={initialData[1]}
-            />
-            <TableRow 
-            initialIsEditing={false}
-            initialInvoiceData={initialData[2]}
-            />
-            <TableRow 
-            initialIsEditing={false}
-            initialInvoiceData={initialData[3]}
-            />
-
+          {rows}
         </tbody>
         <tfoot>
           <AddRowButton />
