@@ -4,7 +4,7 @@ import RateCell from './RateCell.jsx';
 import HoursCell from './HoursCell.jsx';
 import ModeButtons from './ModeButtons.jsx';
 
-const TableRow = ({ initialIsEditing, initialInvoiceData }) => {
+const TableRow = ({ initialIsEditing, initialInvoiceData, deleteFunc }) => {
   const [editMode, setEditMode] = useState(initialIsEditing);
 
   const [description, setDescription] = useState(initialInvoiceData.description)
@@ -27,6 +27,7 @@ const TableRow = ({ initialIsEditing, initialInvoiceData }) => {
         isEditing={editMode} 
         editClick={changeEditMode}
         saveClick={changeNormalMode}
+        deleteFunc={deleteFunc}
       />
       <DescriptionCell 
         isEditing={editMode} 
