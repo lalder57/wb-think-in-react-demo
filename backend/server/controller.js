@@ -1,7 +1,7 @@
 // Purpose of this file is to house all of my handler functions (callback functions of an endpoint)
 
 // Set up global variable to mock a database:
-const TEST_DATA = [
+let TEST_DATA = [
   { id: 0, description: 'Content plan', rate: 50, hours: 4 },
   { id: 1, description: 'Copy writing', rate: 50, hours: 2 },
   { id: 2, description: 'Website design', rate: 50, hours: 5 },
@@ -38,6 +38,19 @@ const handlerfunctions = {
       newInvoice: newInvoice,
     })
   },
+
+  deleteInvoice: (req, res) => {
+    // Extract the value of 'id' from the params
+    const { id } = req.params;
+    // Filter out the invoice with that id from TEST_DATA
+    TEST_DATA = TEST_DATA.filter((invoice) => invoice.id !== +id)
+    // Send my response
+    res.send({
+      message: "Invoice deleted",
+      invoices: TEST_DATA,
+    })
+
+  }
 }
 
 export default handlerfunctions

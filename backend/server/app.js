@@ -38,6 +38,14 @@ app.get('/api/invoices', handlerfunctions.getInvoices)
 
 app.post('/api/addInvoice', handlerfunctions.addInvoice)
 
+// 3rd endpoint (DELETE):
+// - Delete a specific invoice from TEST_DATA
+// - Need 'id' from req.params
+// - 'api/deleteInvoice/:id 
+// - { message: "", invoices: [] } -- (ivoices = updated TEST_DATA after deleting)
+
+app.delete('/api/deleteInvoice/:id', handlerfunctions.deleteInvoice)
+
 // Open up door to server
 ViteExpress.listen(app, 2319, () => console.log("We've got a 23-19! Report to http://localhost:2319"))
 
