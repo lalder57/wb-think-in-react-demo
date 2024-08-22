@@ -50,6 +50,25 @@ const handlerfunctions = {
       invoices: TEST_DATA,
     })
 
+  }, 
+
+  editInvoice: (req, res) => {
+    // Grab invoice data from req.body
+    const { id, description, rate, hours } = req.body;
+    // Find index of this invoice by its id
+    const idx = TEST_DATA.findIndex((invoice) => invoice.id === +id);
+    // Grab that invoice [idx]
+    const invoice = TEST_DATA[idx];
+    // Update its values
+    invoice.description = description;
+    invoice.rate = +rate;
+    invoice.hours = +hours;
+    // Send it back
+    res.send({
+      message: "Invoice has been successfully updated",
+      updatedInvoice: invoice
+    })
+
   }
 }
 

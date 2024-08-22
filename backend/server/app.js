@@ -42,10 +42,18 @@ app.post('/api/addInvoice', handlerfunctions.addInvoice)
 // - Delete a specific invoice from TEST_DATA
 // - Need 'id' from req.params
 // - 'api/deleteInvoice/:id 
-// - { message: "", invoices: [] } -- (ivoices = updated TEST_DATA after deleting)
+// - { message: "", invoices: [] } -- (invoices = updated TEST_DATA after deleting)
 
 app.delete('/api/deleteInvoice/:id', handlerfunctions.deleteInvoice)
 
+
+// 4th endpoint (PUT):
+// - Update rate and/or description and/or hours on a specific invoice object
+// - Body - { id, description, rate, hours}
+// - '/api/editInvoice'
+// - { message: "", updatedInvoice: {} } 
+
+app.put('/api/editInvoice', handlerfunctions.editInvoice)
 // Open up door to server
 ViteExpress.listen(app, 2319, () => console.log("We've got a 23-19! Report to http://localhost:2319"))
 
